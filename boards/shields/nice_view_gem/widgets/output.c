@@ -7,7 +7,7 @@ LV_IMG_DECLARE(bt_unbonded);
 LV_IMG_DECLARE(bt);
 LV_IMG_DECLARE(usb);
 
-#if !IS_ENABLED(CONFIG_ZMK_SPLIT) || IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
+#if IS_ENABLED(CONFIG_NICE_VIEW_WIDGET_INFO)
 static void draw_usb_connected(lv_obj_t *canvas) {
     lv_draw_img_dsc_t img_dsc;
     lv_draw_img_dsc_init(&img_dsc);
@@ -46,7 +46,7 @@ void draw_output_status(lv_obj_t *canvas, const struct status_state *state) {
     init_rect_dsc(&rect_white_dsc, LVGL_FOREGROUND);
     lv_canvas_draw_rect(canvas, 43, 0, 24, 15, &rect_white_dsc);
 
-#if !IS_ENABLED(CONFIG_ZMK_SPLIT) || IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
+#if IS_ENABLED(CONFIG_NICE_VIEW_WIDGET_INFO)
     switch (state->selected_endpoint.transport) {
     case ZMK_TRANSPORT_USB:
         draw_usb_connected(canvas);
